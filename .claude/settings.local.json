@@ -15,8 +15,10 @@
       "Bash(npm uninstall:*)",
       "Bash(npm start)",
       "Bash(dir:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(git add:*)"
     ],
     "deny": []
-  }
+  },
+  "$schema": "https://json.schemastore.org/claude-code-settings.json"
 }

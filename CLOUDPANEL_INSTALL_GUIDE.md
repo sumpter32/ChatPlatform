@@ -17,7 +17,7 @@ This guide will help you install ChatPlatform on CloudPanel step by step!
 4. Fill in:
    - Domain Name: `chat.wwjs.app`
    - Node.js Version: 18 or higher
-   - App Port: `3001`
+   - App Port: `3020`
 5. **Click "Create"**
 
 ---
@@ -29,7 +29,7 @@ This guide will help you install ChatPlatform on CloudPanel step by step!
 3. Fill in:
    - Database Name: `chatplatform`
    - User Name: `chatplatform`
-   - Password: (Create a strong password and SAVE IT!)
+   - Password: Stvn_2484
 4. Click **"Create"**
 
 ---
@@ -38,24 +38,22 @@ This guide will help you install ChatPlatform on CloudPanel step by step!
 
 1. **Connect via SSH** to your server:
    ```bash
-   ssh your-cloudpanel-user@your-server-ip
+   ssh root@your-server-ip
    ```
 
 2. **Go to your site directory**:
    ```bash
-   cd /home/your-cloudpanel-user/htdocs/chat.wwjs.app
+   cd /home/wwjs-chat/htdocs/chat.wwjs.app
    ```
 
-3. **Remove default files**:
+3. **Clone the repository**:
    ```bash
-   rm -rf *
+   git clone https://github.com/sumpter32/ChatPlatform.git
    ```
 
-4. **Upload your ChatPlatform files** (use FileZilla or SCP)
-   
-   OR clone from git:
+4. **Enter the ChatPlatform directory**:
    ```bash
-   git clone https://github.com/your-repo/chatplatform.git .
+   cd ChatPlatform
    ```
 
 ---
@@ -133,7 +131,7 @@ Enter:
 2. Click on **"Vhost"**
 3. Find the `location /` block
 4. **Replace it** with the contents from `vhost-nginx.conf`
-5. **Important**: Replace `YOUR_CLOUDPANEL_USER` with your actual username
+5. **Important**: Replace `YOUR_CLOUDPANEL_USER` with `wwjs-chat`
 6. Click **"Save"**
 
 ---
@@ -141,7 +139,7 @@ Enter:
 ## Step 10: Start Your App! 🚀
 
 ```bash
-cd /home/your-cloudpanel-user/htdocs/chat.wwjs.app
+cd /home/wwjs-chat/htdocs/chat.wwjs.app/ChatPlatform
 ./start-production.sh
 ```
 
