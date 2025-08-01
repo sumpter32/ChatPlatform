@@ -18,7 +18,7 @@ import Settings from './pages/admin/Settings';
 import TestCSS from './pages/admin/TestCSS';
 import WordPressSSO from './pages/WordPressSSO';
 
-// Smart backend URL detection - use tunnel for HTTPS to avoid mixed content
+// Smart backend URL detection
 const getApiBaseUrl = () => {
   const hostname = window.location.hostname;
   
@@ -29,8 +29,8 @@ const getApiBaseUrl = () => {
     return 'http://localhost:3001';
   }
   
-  // If accessing via Cloudflare tunnel, use HTTPS through the tunnel
-  return 'https://jesus.stevensumpter.com';
+  // Use the same domain as the frontend (assumes backend is on same domain)
+  return `https://${hostname}`;
 };
 
 const API_BASE_URL = getApiBaseUrl();

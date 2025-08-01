@@ -12,8 +12,8 @@ const getApiBaseUrl = () => {
     return 'http://localhost:3001';
   }
   
-  // If accessing via Cloudflare tunnel, use HTTPS through the tunnel
-  return 'https://jesus.stevensumpter.com';
+  // Use the same domain as the frontend (assumes backend is on same domain)
+  return `https://${hostname}`;
 };
 
 const API_BASE_URL = getApiBaseUrl();
