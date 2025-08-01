@@ -1,0 +1,68 @@
+/* Platform Theme Variables */
+:root {
+  --primary-color: #3B82F6;
+  --primary-color-light: rgba(59, 130, 246, 0.1);
+  --primary-color-dark: #2563EB;
+}
+
+/* Override Tailwind colors with platform theme */
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.bg-primary-light {
+  background-color: var(--primary-color-light);
+}
+
+.bg-primary-dark {
+  background-color: var(--primary-color-dark);
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.border-primary {
+  border-color: var(--primary-color);
+}
+
+.ring-primary {
+  --tw-ring-color: var(--primary-color);
+}
+
+/* Gradient backgrounds using primary color */
+.bg-gradient-primary {
+  background-image: linear-gradient(to right, var(--primary-color), var(--primary-color-dark));
+}
+
+/* Button styles using primary color */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color-dark);
+}
+
+/* Focus states using primary color */
+.focus\:ring-primary:focus {
+  --tw-ring-color: var(--primary-color);
+}
+
+.focus\:border-primary:focus {
+  border-color: var(--primary-color);
+}
+
+/* Hover states */
+.hover\:bg-primary:hover {
+  background-color: var(--primary-color);
+}
+
+.hover\:text-primary:hover {
+  color: var(--primary-color);
+}
+
+.hover\:border-primary:hover {
+  border-color: var(--primary-color);
+}

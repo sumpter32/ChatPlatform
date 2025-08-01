@@ -1,0 +1,116 @@
+You are building a self-hosted AI chatbot platform similar to ChatGPT, but customizable for different use cases like What Would Jesus Say (https://wwjs.app). The platform must run locally (Docker-compatible), support Open WebUI API backends, and connect to MySQL.
+
+🔧 Project Overview
+Build a fullstack web application using:
+- Frontend: React + Vite + TailwindCSS
+- Backend: Express.js + Node.js
+- Database: MySQL
+- Auth: Local email/password + JWT
+- Image Uploads: Processed locally using canvas (frontend) and/or sharp (backend)
+
+✅ Self-Hosted Install Flow
+- Include an Install Wizard that:
+  - Collects MySQL credentials
+  - Tests DB connection
+  - Creates required tables
+  - Writes .env file
+  - Optionally seeds an admin user
+
+⚙️ Admin Panel Features
+- Agent Management
+  - Name
+  - Icon (URL or upload)
+  - Greeting message
+  - Prompt template
+  - Selectable model (from Open WebUI)
+  - Vision-enabled toggle (for image upload)
+  - max_tokens
+  - temperature
+  - has_pre_prompt toggle
+  - response_style: dropdown (Parables, Casual, Direct, King James)
+  - Toggle Active/Inactive
+
+- Model Integration (Open WebUI)
+  - API Base URL input
+  - Test connection
+  - Sync available models (save to DB)
+  - Allow per-model toggle for use
+
+- Platform Settings (Rebranding)
+  - Site name
+  - Site logo upload
+  - Favicon
+  - Primary theme color
+  - Footer text
+  - Custom CSS override
+
+- WordPress Integration Section
+  - WordPress site URL
+  - API key/secret (if needed)
+  - Test connection
+  - Status indicator
+
+💬 Chat System Features
+- Fully responsive chat UI (mobile-friendly)
+- Message streaming if available (from Open WebUI or other API)
+- Supports multiple agents
+- Context memory using last N messages (from DB)
+- Chat history saved per thread
+
+📦 Export & Sharing Features
+- Allow users to check messages and generate a shareable image from selected content
+- Render shareable image using html2canvas
+- Provide sharing popup with:
+  - Save image locally
+  - Copy to clipboard
+  - Mobile share (navigator.share())
+
+- Also provide:
+  - Export full chat thread as PDF
+  - Email chat transcript to self
+
+📱 Mobile UX Requirements
+- Sticky message input
+- Optimized layout for 320px–768px widths
+- Easy tap targets
+- Collapsible agent selector or fixed top menu
+
+🧾 Database Schema
+Please create migrations for:
+- users (id, name, email, password_hash, role)
+- chat_threads (id, user_id, title, created_at)
+- messages (id, thread_id, role, content, created_at)
+- agents (id, name, icon_url, greeting, prompt_template, model_id, max_tokens, temperature, vision_enabled, has_pre_prompt, response_style, active)
+- models (id, name, provider, description, enabled, last_synced)
+- platform_settings (key, value)
+- wordpress_settings (url, api_key, last_checked)
+
+🛠 Dev Notes
+- Use .env for all config
+- Include docker-compose.yml with:
+  - MySQL
+  - Backend API (Express.js)
+  - Optional: static frontend or build step
+- Provide a README.md with:
+  - Install instructions
+  - DB setup
+  - Login info
+  - Frontend and backend start scripts
+
+📂 Project Folder Structure
+/platform-root/
+├── /frontend/              ← React + Vite + Tailwind
+│   ├── /pages/             ← Chat, Login, Admin, Install Wizard
+│   └── /components/        ← ChatBubble, MessageInput, ShareModal, AgentSelect
+├── /backend/               ← Express.js server
+│   ├── /routes/            ← /api/chat, /api/install, /api/admin
+│   ├── /utils/             ← JWT, DB, OpenWebUI client, image resize
+│   └── index.js
+├── /sql/                   ← DB migrations (MySQL)
+├── /docker/                ← Docker configs
+├── .env.example
+├── docker-compose.yml
+└── README.md
+
+🤖 Final Goal
+This platform will be used to host custom agents like “Jesus” on WWJS.app, but must support rebranding for other projects. Keep the code clean, modular, and extensible. Prioritize local-first processing, open source compatibility, and ease of install on CloudPanel or similar VPS environments.
